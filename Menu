@@ -1,0 +1,291 @@
+import java.util.Scanner;
+
+public class App {
+    
+    public static void main(String[] args) throws Exception {
+        
+        Scanner lector = new Scanner(System.in);
+        //Declarar 
+        byte intentos = 1, intentosMaximos = 3;
+
+
+        int cantidadLados;
+        double longitudLados, altura, areaLateral=0,areaTotal=0,volumen=0;
+        double perimetroBase, areaBase, area, apotema,ApotemaP, radio;
+    
+        double PI = 3.14;
+
+        System.out.println("Cuál cuerpo geométrico desea trabajar: ");
+        System.out.println("a) Prisma ");
+        System.out.println("b) Cilindro");
+        System.out.println("c) Piramide ");
+        System.out.println("d) Cono ");
+        System.out.println("e) Esfera ");
+        System.out.println("f) Tetraedro ");
+        System.out.println("g) Hexaedro ");
+        System.out.println("h) Octaedro ");
+        System.out.println("i) Dodecaedro");
+        System.out.println("j) Icosaedro ");
+        System.out.println("k) Ortoedro ");
+        System.out.println("l) Tronco de piramide ");
+        System.out.println("m) Tronco de cono");
+        System.out.println("n) Zona esferica ");
+        System.out.println("o) Casquete esferico ");
+        System.out.println("p) Huso esferico ");
+        System.out.println("q) Cuña esferica");
+        System.out.println("r) salir ");
+
+        char opc = lector. next().charAt(0);
+        switch (opc){
+            case 'A':
+            case 'a': // PRISMA
+            
+               // se calculara prisma 
+               //Solicitar datos al usuario
+
+               //Se habre la sentencia repetitiva
+               while(intentos<=intentosMaximos){
+               System.out.print("Cantidad de lados: ");
+               cantidadLados = lector.nextInt();
+
+               altura = lector.nextDouble();
+               System.out.print("Longitud de los lados: ");
+               longitudLados = lector.nextDouble();
+                //Procesar datos
+               perimetroBase = cantidadLados * longitudLados;
+                areaLateral = perimetroBase * altura;
+                double alfa = (Math.PI/180) * (360/cantidadLados);
+                apotema = longitudLados / (2 * Math.tan((alfa)/2));
+               areaBase = (perimetroBase * apotema)/2;
+               areaTotal = areaLateral + 2 * areaBase;
+               volumen = areaBase * altura;
+
+
+
+
+
+
+
+
+
+
+                  
+               if(cantidadLados>4 && altura>0 && longitudLados>0){
+                break;
+               }else {
+                System.out.println("No se aceptan valores erroneos");
+                if(intentos>intentosMaximos
+                
+                
+                  
+                
+                
+                
+                
+                
+                
+                
+                ){
+                    System.out.println("Vuelva a intentarlo");
+                    System.out.println("Le quedan " + (intentosMaximos-intentos)+ " Intentoss");
+                    
+                }
+               }
+               }
+
+               if(intentos == intentosMaximos){
+                System.out.println("No tiene mas intentos saliendo");
+               }else{
+
+                //Mostrar los resultados
+               System.out.println("Area lateral: " + areaLateral + " unidades cuadradas.");
+               System.out.println("Area total: " + areaTotal + " unidades cuadradas.");
+               System.out.println("Volumen: " + volumen + " unidades cubicas.");
+              break;
+               }
+               
+
+             case 'B':   
+            case 'b':// CILINDRO
+                //Solicitar datos al usuario
+               System.out.print("Digite el Radio: ");
+               radio = lector.nextInt();
+               System.out.print("Altura: ");
+               altura = lector.nextDouble();
+               
+                //Procesar datos
+               perimetroBase = 2 * PI * radio;
+               areaLateral = perimetroBase * altura;
+               areaBase = PI * radio * radio;
+               areaTotal = areaLateral + 2 * areaBase;
+               volumen = areaBase * altura;
+               //Mostrar los resultados
+               System.out.println("Area lateral: " + areaLateral + " unidades cuadradas.");
+               System.out.println("Area total: " + areaTotal + " unidades cuadradas.");
+               System.out.println("Volumen: " + volumen + " unidades cubicas.");
+                
+             break;
+             case 'C':
+            case 'c': // PIRAMIDE
+
+                //Solicitar datos al usuario
+               System.out.print("Cantidad de lados: ");
+               cantidadLados = lector.nextInt();
+               System.out.print("Altura: ");
+               altura = lector.nextDouble();
+               System.out.print("Longitud de los lados: ");
+               longitudLados = lector.nextDouble();
+                //Procesar datos
+               perimetroBase = cantidadLados * longitudLados;
+               double  alfa = (Math.PI/180) * (360/cantidadLados);
+               apotema = longitudLados / (2 * Math.tan((alfa)/2));
+               ApotemaP = altura + apotema;
+               areaLateral = perimetroBase * ApotemaP / 2;
+               areaBase = (perimetroBase * apotema)/2;
+               areaTotal = areaLateral +  areaBase;
+               volumen = areaBase * altura / 3 ;
+               //Mostrar los resultados
+               System.out.println("Area lateral: " + areaLateral + " unidades cuadradas.");
+               System.out.println("Area total: " + areaTotal + " unidades cuadradas.");
+               System.out.println("Volumen: " + volumen + " unidades cubicas.");
+                
+            break;
+            case 'D':
+            case 'd':// CONO
+                //Solicitar datos al usuario
+               System.out.print("Digite el Radio: ");
+               radio = lector.nextInt();
+               System.out.print("Altura: ");
+               altura = lector.nextDouble();
+               
+                //Procesar datos
+                double gravedad = altura + radio;
+               areaLateral = PI * radio * gravedad ;
+               areaBase = PI * radio * radio;
+               double SGR = gravedad + radio;
+               areaTotal = PI * radio * SGR ;
+               volumen = PI * radio * radio * altura / 3;
+               //Mostrar los resultados
+               System.out.println("Area lateral: " + areaLateral + " unidades cuadradas.");
+               System.out.println("Area total: " + areaTotal + " unidades cuadradas.");
+               System.out.println("Volumen: " + volumen + " unidades cubicas.");
+                
+            break;
+            case 'E':
+            case 'e': // ESFERA
+                 //Solicitar datos al usuario
+               System.out.print("Digite el Radio: ");
+               radio = lector.nextInt();
+                //Procesar datos
+               area = 4 * PI * radio * radio;
+               volumen = (4 / 3) * (PI * radio * radio * radio);
+               //Mostrar los resultados
+               System.out.println("Area : " + area + " unidades cuadradas.");
+               System.out.println("Volumen: " + volumen + " unidades cubicas.");
+                
+            break;
+             case 'F':
+             case 'f': // TETRAEDRO
+                System.out.print("Ingrese la longitud de un lado del tetraedro: ");
+                longitudLados = lector.nextDouble();
+                area = Math.sqrt(3) * longitudLados * longitudLados;
+                volumen = (longitudLados * longitudLados * longitudLados) * ( Math.sqrt(2)/12);
+                System.out.println("Área del tetraedro: " + area + " unidades cuadradas.");
+                System.out.println("Volumen del tetraedro: " + volumen + " unidades cubicas. ");
+            
+
+            break;
+            case 'G':
+            case 'g': // HEXAEDRO
+            System.out.print("Ingrese la longitud de un lado del hexaedro: ");
+                longitudLados = lector.nextDouble();
+                area = 6 * longitudLados * longitudLados;
+                volumen = longitudLados * longitudLados * longitudLados;
+                System.out.println("Área del hexaedro: " + area + " unidades cuadradas.");
+                System.out.println("Volumen del hexaedro: " + volumen + " unidades cubicas. ");
+
+                
+            break;
+            case 'H':
+            case 'h': // OCTAEDRO
+                System.out.print("Ingrese la longitud de un lado del octaedro: ");
+                longitudLados = lector.nextDouble();
+                area = Math.sqrt(3) * longitudLados * longitudLados * 2;
+                volumen = (longitudLados * longitudLados * longitudLados) * ( Math.sqrt(2)/3);
+                System.out.println("Área del octaedro: " + area + " unidades cuadradas.");
+                System.out.println("Volumen del octaedro: " + volumen + " unidades cubicas. ");
+            
+                                             
+                break;
+
+            case 'I':    
+            case 'i' : // DODECAEDRO
+              System.out.print("ingrese la longitud de un lado del dodecaedro: ");
+                longitudLados= lector.nextDouble();
+                area = 3 * longitudLados * longitudLados * Math.sqrt(25 + 10 * Math.sqrt(5));
+                volumen = (longitudLados * longitudLados * longitudLados) * 1/4 * (15 + 7* Math.sqrt(5));
+                System.out.println("Área del dodecaedro: " + area + " unidades cuadradas.");
+                System.out.println("Volumen del dodecaedro: " + volumen + " unidades cubicas. ");
+            break;
+
+            case 'J':
+            case 'j': // ICOSAEDRO
+            System.out.print("Ingrese la longitud de un lado del ICOSAEDRO : ");
+                longitudLados = lector.nextDouble();
+                area = Math.sqrt(3) * longitudLados * longitudLados * 5;
+                volumen = 5/12 * (longitudLados * longitudLados * longitudLados) * (3 + Math.sqrt(5));
+                System.out.println("Área del icosaedro: " + area + " unidades cuadradas.");
+                System.out.println("Volumen del icosaedro: " + volumen + " unidades cubicas. ");
+            break;
+
+            
+            case 'K': // ORTOEDRO
+            System.out.print("Ingrese la longitud del ortoedro: ");
+            double longitud = lector.nextDouble();
+            System.out.print("Ingrese el ancho del ortoedro: ");
+            double ancho = lector.nextDouble();
+            System.out.print("Ingrese la altura del ortoedro: ");
+             altura = lector.nextDouble();
+            double areaSuperficie = 2 * (longitud * ancho + longitud * altura + ancho * altura);
+            volumen = longitud * ancho * altura;
+            System.out.println("El área de superficie del ortoedro es: " + areaSuperficie + " unidades cuadradas. ");
+            System.out.println("El volumen del ortoedro es: " + volumen + " unidades cubicas. ");
+            
+    
+            break;
+            
+            case 'L':
+            case 'l': // TRONCO DE PIRAMIDES
+           
+             System.out.print("Ingrese el lado de la base inferior (x): ");
+             double x = lector.nextDouble();       
+             System.out.print("Ingrese el lado de la base superior (y): ");
+             double y = lector.nextDouble();
+             System.out.print("Ingrese la altura del tronco: ");
+             altura = lector.nextDouble();    
+             System.out.print("ingrese la catidad de lados : ");
+             cantidadLados = lector.nextInt();
+             System.out.print("ingrese la longitud de lados: ");
+             longitudLados = lector.nextDouble();
+               alfa = (Math.PI/180) * (360/cantidadLados);
+               apotema = longitudLados / (2 * Math.tan((alfa)/2));
+               ApotemaP = altura + apotema;
+                    areaLateral = (x + y)/2 * ApotemaP;
+                    areaBase = 
+                    areaTotal = areaLateral + x + y;
+                    volumen = (altura / 3) * x + y + Math.sqrt( x * y );
+            
+                    System.out.println("El área lateral del tronco de pirámide es: " + areaLateral);
+                    System.out.println("El área total del tronco de pirámide es: " + areaTotal);
+                    System.out.println("El volumen del tronco de pirámide es: " + volumen);
+                
+            
+               
+            break;
+            case 'r': // salida
+
+        
+    }
+    lector.close();
+}
+}
